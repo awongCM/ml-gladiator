@@ -13,6 +13,17 @@ def _load_module(name, filename):
 
 statistical_learning = _load_module("statistical_learning", "statistical-learning.py")
 text_learning = _load_module("text_learning", "text-learning.py")
+hyperparameter_tuning = _load_module("hyperparameter_tuning", "hyperparameter-tuning.py")
+ensemble_learning = _load_module("ensemble_learning", "ensemble-learning.py")
+unsupervised_learning = _load_module("unsupervised_learning", "unsupervised-learning.py")
+
+MODULES = {
+  "statistical": ("Statistical learning", statistical_learning),
+  "text": ("Text learning", text_learning),
+  "tuning": ("Hyperparameter tuning", hyperparameter_tuning),
+  "ensemble": ("Ensemble learning", ensemble_learning),
+  "unsupervised": ("Unsupervised learning", unsupervised_learning),
+}
 
 
 def main():
@@ -22,7 +33,7 @@ def main():
   parser.add_argument(
     "module",
     nargs="?",
-    choices=["statistical", "text", "all"],
+    choices=["all", *MODULES.keys()],
     default="all",
     help="which exercise to run (default: all)",
   )
@@ -30,13 +41,12 @@ def main():
 
   print("ML Goodness begins here\n")
 
-  if args.module in ("statistical", "all"):
-    statistical_learning.run()
-    if args.module == "all":
+  selected = list(MODULES.keys()) if args.module == "all" else [args.module]
+  for index, key in enumerate(selected):
+    _, module = MODULES[key]
+    module.run()
+    if index < len(selected) - 1:
       print()
-
-  if args.module in ("text", "all"):
-    text_learning.run()
 
 
 if __name__ == "__main__":

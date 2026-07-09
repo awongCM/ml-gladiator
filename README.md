@@ -6,3 +6,25 @@ Python Libraries used.
 * Numpy
 * Sklearn
 * Scipy
+
+## Exercises
+
+| Module | Command | Topics |
+|--------|---------|--------|
+| Statistical learning | `python3 main.py statistical` | Pipelines, scaling, logistic regression (Iris) |
+| Text learning | `python3 main.py text` | TF-IDF, naive Bayes (20 Newsgroups) |
+| Hyperparameter tuning | `python3 main.py tuning` | GridSearchCV, SVM, cross-validation (Wine) |
+| Ensemble learning | `python3 main.py ensemble` | RandomForest, feature importances (Breast cancer) |
+| Unsupervised learning | `python3 main.py unsupervised` | PCA, KMeans, clustering metrics (Wine) |
+
+Run all exercises:
+
+```bash
+python3 main.py
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
