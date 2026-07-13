@@ -17,6 +17,7 @@ Python Libraries used.
 | Ensemble learning | `python3 main.py ensemble` | RandomForest, feature importances (Breast cancer) |
 | Unsupervised learning | `python3 main.py unsupervised` | PCA, KMeans, clustering metrics (Wine) |
 | Regression with regularization | `python3 main.py regression` | Pipeline, StandardScaler, LinearRegression vs Ridge vs Lasso, RMSE/R² (California housing) |
+| ColumnTransformer | `python3 main.py columns` | Mixed numeric/categorical features (Adult income) |
 
 Run all exercises (`python3 main.py all` is the same):
 

@@ -17,6 +17,10 @@ hyperparameter_tuning = _load_module("hyperparameter_tuning", "hyperparameter-tu
 ensemble_learning = _load_module("ensemble_learning", "ensemble-learning.py")
 unsupervised_learning = _load_module("unsupervised_learning", "unsupervised-learning.py")
 regression_learning = _load_module("regression_learning", "regression-learning.py")
+column_transformer_learning = _load_module(
+  "column_transformer_learning",
+  "column-transformer-learning.py",
+)
 
 MODULES = {
   "statistical": ("Statistical learning", statistical_learning),
@@ -25,6 +29,7 @@ MODULES = {
   "ensemble": ("Ensemble learning", ensemble_learning),
   "unsupervised": ("Unsupervised learning", unsupervised_learning),
   "regression": ("Regression with regularization", regression_learning),
+  "columns": ("ColumnTransformer", column_transformer_learning),
 }
 
 
