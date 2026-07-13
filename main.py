@@ -21,6 +21,10 @@ column_transformer_learning = _load_module(
   "column_transformer_learning",
   "column-transformer-learning.py",
 )
+model_persistence_learning = _load_module(
+  "model_persistence_learning",
+  "model-persistence-learning.py",
+)
 
 MODULES = {
   "statistical": ("Statistical learning", statistical_learning),
@@ -30,6 +34,7 @@ MODULES = {
   "unsupervised": ("Unsupervised learning", unsupervised_learning),
   "regression": ("Regression with regularization", regression_learning),
   "columns": ("ColumnTransformer", column_transformer_learning),
+  "persistence": ("Model persistence", model_persistence_learning),
 }
 
 

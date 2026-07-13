@@ -7,6 +7,7 @@ Python Libraries used.
 * Sklearn
 * Scipy
 * Pandas
+* Joblib
 
 ## Exercises
 
@@ -19,6 +20,7 @@ Python Libraries used.
 | Unsupervised learning | `python3 main.py unsupervised` | PCA, KMeans, clustering metrics (Wine) |
 | Regression with regularization | `python3 main.py regression` | Pipeline, StandardScaler, LinearRegression vs Ridge vs Lasso, RMSE/R² (California housing) |
 | ColumnTransformer | `python3 main.py columns` | Nested numeric/categorical pipelines, imputation, OneHotEncoder, LogisticRegression (Adult income) |
+| Model persistence | `python3 main.py persistence` | Save/load pipelines with joblib (Iris) |
 
 Run all exercises (`python3 main.py all` is the same):
 
