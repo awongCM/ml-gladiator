@@ -16,6 +16,7 @@ text_learning = _load_module("text_learning", "text-learning.py")
 hyperparameter_tuning = _load_module("hyperparameter_tuning", "hyperparameter-tuning.py")
 ensemble_learning = _load_module("ensemble_learning", "ensemble-learning.py")
 unsupervised_learning = _load_module("unsupervised_learning", "unsupervised-learning.py")
+regression_learning = _load_module("regression_learning", "regression-learning.py")
 
 MODULES = {
   "statistical": ("Statistical learning", statistical_learning),
@@ -23,6 +24,7 @@ MODULES = {
   "tuning": ("Hyperparameter tuning", hyperparameter_tuning),
   "ensemble": ("Ensemble learning", ensemble_learning),
   "unsupervised": ("Unsupervised learning", unsupervised_learning),
+  "regression": ("Regression with regularization", regression_learning),
 }
 
 

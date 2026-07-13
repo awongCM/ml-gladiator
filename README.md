@@ -16,6 +16,7 @@ Python Libraries used.
 | Hyperparameter tuning | `python3 main.py tuning` | GridSearchCV, SVM, cross-validation (Wine) |
 | Ensemble learning | `python3 main.py ensemble` | RandomForest, feature importances (Breast cancer) |
 | Unsupervised learning | `python3 main.py unsupervised` | PCA, KMeans, clustering metrics (Wine) |
+| Regression with regularization | `python3 main.py regression` | Ridge, Lasso, RMSE/R2 (California housing) |
 
 Run all exercises (`python3 main.py all` is the same):
 
