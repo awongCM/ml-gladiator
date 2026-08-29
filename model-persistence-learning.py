@@ -27,15 +27,26 @@ def run():
   ])
   model.fit(X_train, y_train)
   original_predictions = model.predict(X_test)
+  original_proba = model.predict_proba(X_test)
+
+  print("Model persistence: save and reload with joblib")
+  print("joblib uses pickle; do not load files from untrusted sources.")
 
   with tempfile.TemporaryDirectory() as temp_dir:
     model_path = Path(temp_dir) / "iris_pipeline.joblib"
     joblib.dump(model, model_path)
     loaded_model = joblib.load(model_path)
     loaded_predictions = loaded_model.predict(X_test)
+    loaded_proba = loaded_model.predict_proba(X_test)
 
-  print("Model persistence: save and reload with joblib")
-  print(f"Model path (temp): {model_path.name}")
-  print(f"Original accuracy:  {accuracy_score(y_test, original_predictions):.3f}")
-  print(f"Reloaded accuracy:  {accuracy_score(y_test, loaded_predictions):.3f}")
-  print(f"Predictions match:  {np.array_equal(original_predictions, loaded_predictions)}")
+    print(f"Model path: {model_path}")
+    print(f"Artifact exists: {model_path.exists()}")
+    print(f"Original accuracy:  {accuracy_score(y_test, original_predictions):.3f}")
+    print(f"Reloaded accuracy:  {accuracy_score(y_test, loaded_predictions):.3f}")
+    print(f"Predictions match:  {np.array_equal(original_predictions, loaded_predictions)}")
+    if not np.array_equal(original_predictions, loaded_predictions):
+      raise AssertionError("Reloaded model predictions do not match the original pipeline")
+    if not np.allclose(original_proba, loaded_proba):
+      raise AssertionError("Reloaded model probabilities do not match the original pipeline")
+
+  print("Temporary artifact directory removed after the round-trip.")
