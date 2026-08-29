@@ -30,8 +30,9 @@ def run():
   target = labels.isin([">50K", ">50K."]).astype(int)
 
   missing = features.isna().sum()
+  missing_nonzero = {name: int(count) for name, count in missing.items() if count}
   print("ColumnTransformer: Adult income with mixed feature types")
-  print(f"Missing values: {int(missing.sum())} ({dict(missing[missing > 0])})")
+  print(f"Missing values: {int(missing.sum())} ({missing_nonzero})")
 
   X_train, X_test, y_train, y_test = train_test_split(
     features,
