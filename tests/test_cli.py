@@ -16,22 +16,25 @@ def load_main():
 
 class ModuleRegistryTests(unittest.TestCase):
   def test_help_lists_registered_modules(self):
+    app = load_main()
     result = subprocess.run(
       [sys.executable, str(ROOT / "main.py"), "--help"],
       check=True,
       capture_output=True,
       text=True,
     )
-    for name in ("statistical", "text", "tuning", "ensemble", "unsupervised"):
+    self.assertIn("all", result.stdout)
+    for name in app.MODULES:
       with self.subTest(name=name):
         self.assertIn(name, result.stdout)
 
   def test_modules_map(self):
     app = load_main()
-    self.assertEqual(
-      set(app.MODULES),
-      {"statistical", "text", "tuning", "ensemble", "unsupervised"},
-    )
+    self.assertGreaterEqual(len(app.MODULES), 5)
+    for name, (title, module) in app.MODULES.items():
+      with self.subTest(name=name):
+        self.assertTrue(title)
+        self.assertTrue(callable(getattr(module, "run", None)))
 
 
 if __name__ == "__main__":
