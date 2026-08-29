@@ -17,7 +17,7 @@ Python Libraries used.
 | Ensemble learning | `python3 main.py ensemble` | RandomForest, feature importances (Breast cancer) |
 | Unsupervised learning | `python3 main.py unsupervised` | PCA, KMeans, clustering metrics (Wine) |
 
-Run all exercises:
+Run all exercises (`python3 main.py all` is the same):
 
 ```bash
 python3 main.py

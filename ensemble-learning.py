@@ -23,7 +23,9 @@ def run():
   model.fit(X_train, y_train)
   predictions = model.predict(X_test)
 
-  cv_scores = cross_val_score(model, cancer.data, cancer.target, cv=5, scoring="accuracy")
+  # cross_val_score clones the estimator; score only the training split so
+  # the CV number is not mixed with the held-out test rows.
+  cv_scores = cross_val_score(model, X_train, y_train, cv=5, scoring="accuracy")
 
   top_features = sorted(
     zip(cancer.feature_names, model.feature_importances_),
@@ -33,7 +35,7 @@ def run():
 
   print("Ensemble learning: Breast cancer with RandomForest")
   print(f"Test accuracy: {accuracy_score(y_test, predictions):.3f}")
-  print(f"5-fold CV accuracy: {cv_scores.mean():.3f} (+/- {cv_scores.std() * 2:.3f})")
+  print(f"5-fold CV accuracy (train split): {cv_scores.mean():.3f} (+/- {cv_scores.std() * 2:.3f})")
   print(classification_report(y_test, predictions, target_names=cancer.target_names))
   print("Top feature importances:")
   for name, importance in top_features:

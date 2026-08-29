@@ -43,7 +43,8 @@ def main():
 
   selected = list(MODULES.keys()) if args.module == "all" else [args.module]
   for index, key in enumerate(selected):
-    _, module = MODULES[key]
+    title, module = MODULES[key]
+    print(title)
     module.run()
     if index < len(selected) - 1:
       print()

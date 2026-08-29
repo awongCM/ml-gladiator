@@ -21,13 +21,20 @@ def run():
     ("classifier", SVC()),
   ])
 
+  # Linear SVC ignores gamma; search it only for the RBF kernel.
   search = GridSearchCV(
     pipeline,
-    param_grid={
-      "classifier__C": [0.1, 1, 10],
-      "classifier__kernel": ["linear", "rbf"],
-      "classifier__gamma": ["scale", "auto"],
-    },
+    param_grid=[
+      {
+        "classifier__kernel": ["linear"],
+        "classifier__C": [0.1, 1, 10],
+      },
+      {
+        "classifier__kernel": ["rbf"],
+        "classifier__C": [0.1, 1, 10],
+        "classifier__gamma": ["scale", "auto"],
+      },
+    ],
     cv=5,
     scoring="accuracy",
     n_jobs=-1,
